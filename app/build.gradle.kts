@@ -56,4 +56,20 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Retrofit
+    implementation(libs.retrofit)
+
+    // Kotlin Serialization
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.kotlinx.serialization.json)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.51")
+
+    //OkHttp3
+    implementation("com.squareup.okhttp3:okhttp:5.3.2")
 }
