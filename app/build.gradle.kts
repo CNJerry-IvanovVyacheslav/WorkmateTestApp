@@ -62,4 +62,8 @@ dependencies {
 
     // Kotlin Serialization Converter
     implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.kotlinx.serialization.json)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
 }
