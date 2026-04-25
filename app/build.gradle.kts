@@ -60,10 +60,16 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit)
 
-    // Kotlin Serialization Converter
+    // Kotlin Serialization
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.kotlinx.serialization.json)
 
     // Room
     implementation(libs.androidx.room.runtime)
+
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.51")
+
+    //OkHttp3
+    implementation("com.squareup.okhttp3:okhttp:5.3.2")
 }
