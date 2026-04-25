@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CharacterListResponseDto(
-    val result: CharacterDto
+    val results: List<CharacterDto>
 )
