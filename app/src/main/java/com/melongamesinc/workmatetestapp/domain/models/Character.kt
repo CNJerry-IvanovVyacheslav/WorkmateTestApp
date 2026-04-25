@@ -10,14 +10,14 @@ data class Character(
     val birthYear: String,
     val gender: String,
     val species: List<Species>,
-    val films: List<Films>,
+    val films: List<Film>,
 )
 
 data class Species(
     val name: String
 )
 
-data class Films(
+data class Film(
     val title: String,
     val filmDescription: String
 )
