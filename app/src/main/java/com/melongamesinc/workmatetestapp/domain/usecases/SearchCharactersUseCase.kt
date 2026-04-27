@@ -4,10 +4,10 @@ import com.melongamesinc.workmatetestapp.domain.models.Character
 import com.melongamesinc.workmatetestapp.domain.repository.CharacterRepository
 import javax.inject.Inject
 
-class GetCharactersUseCase @Inject constructor(
+class SearchCharactersUseCase @Inject constructor(
     private val repository: CharacterRepository
 ) {
-    suspend operator fun invoke(): List<Character> {
-        return repository.getCharacters()
+    suspend operator fun invoke(query: String): List<Character> {
+        return repository.searchCharacter(query)
     }
 }

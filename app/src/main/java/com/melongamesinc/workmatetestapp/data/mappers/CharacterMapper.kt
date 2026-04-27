@@ -4,10 +4,13 @@ import com.melongamesinc.workmatetestapp.data.dto.CharacterDto
 import com.melongamesinc.workmatetestapp.data.entities.CharacterEntity
 import com.melongamesinc.workmatetestapp.domain.models.Character
 
+private fun extractIdFromUrl(url: String): String {
+    return url.trimEnd('/').split('/').lastOrNull() ?: ""
+}
 
 fun CharacterDto.toDomain(): Character {
     return Character(
-        id = this.id,
+        id = extractIdFromUrl(this.url),
         name = this.name,
         height = this.height,
         mass = this.mass,
@@ -15,14 +18,14 @@ fun CharacterDto.toDomain(): Character {
         eyesColor = this.eyeColor,
         birthYear = this.birthYear,
         gender = this.gender,
-        species = emptyList(), // for now
-        films = emptyList(), // for now
+        species = this.species,
+        films = this.films
     )
 }
 
 fun CharacterDto.toEntity(): CharacterEntity {
     return CharacterEntity(
-        id = this.id,
+        id = extractIdFromUrl(this.url),
         name = this.name,
         height = this.height,
         mass = this.mass,
@@ -45,7 +48,7 @@ fun CharacterEntity.toDomain(): Character {
         eyesColor = this.eyes,
         birthYear = this.birthYear,
         gender = this.gender,
-        species = emptyList(),
-        films = emptyList()
+        species = this.species,
+        films = this.films
     )
 }

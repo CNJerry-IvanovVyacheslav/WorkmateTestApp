@@ -8,7 +8,7 @@ import com.melongamesinc.workmatetestapp.data.entities.CharacterEntity
 
 @Dao
 interface CharacterDao {
-    @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacters(characters: List<CharacterEntity>)
 
     @Query("SELECT * FROM characters")
