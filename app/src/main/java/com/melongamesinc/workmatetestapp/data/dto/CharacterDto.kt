@@ -14,14 +14,11 @@ data class CharacterDto(
     val skinColor: String,
     @SerialName("eye_color")
     val eyeColor: String,
-    @SerialName ("birth_year")
+    @SerialName("birth_year")
     val birthYear: String,
     val gender: String,
     val homeworld: String,
     val url: String,
-    val films: List<String>,
-    val species: List<String>
-) {
-    val id: String
-        get() = url.trimEnd('/').split('/').lastOrNull() ?: ""
-}
+    val films: List<String> = emptyList(),
+    val species: List<String> = emptyList()
+)

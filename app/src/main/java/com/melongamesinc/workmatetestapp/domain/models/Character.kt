@@ -9,15 +9,6 @@ data class Character(
     val eyesColor: String,
     val birthYear: String,
     val gender: String,
-    val species: List<Species>,
-    val films: List<Film>,
-)
-
-data class Species(
-    val name: String
-)
-
-data class Film(
-    val title: String,
-    val filmDescription: String
+    val films: List<String>,
+    val species: List<String>
 )

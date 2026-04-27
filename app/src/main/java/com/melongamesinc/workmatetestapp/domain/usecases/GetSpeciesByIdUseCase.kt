@@ -1,13 +1,13 @@
 package com.melongamesinc.workmatetestapp.domain.usecases
 
-import com.melongamesinc.workmatetestapp.domain.models.Character
+import com.melongamesinc.workmatetestapp.domain.models.Species
 import com.melongamesinc.workmatetestapp.domain.repository.CharacterRepository
 import javax.inject.Inject
 
-class GetCharactersUseCase @Inject constructor(
+class GetSpeciesByIdUseCase @Inject constructor(
     private val repository: CharacterRepository
 ) {
-    suspend operator fun invoke(): List<Character> {
-        return repository.getCharacters()
+    suspend operator fun invoke(id: String): Species {
+        return repository.getSpeciesById(id)
     }
 }

@@ -3,9 +3,12 @@ package com.melongamesinc.workmatetestapp.data.impl
 import android.util.Log
 import com.melongamesinc.workmatetestapp.data.api.StarWarsApi
 import com.melongamesinc.workmatetestapp.data.db.CharacterDao
+import com.melongamesinc.workmatetestapp.data.dto.toDomain
 import com.melongamesinc.workmatetestapp.data.mappers.toDomain
 import com.melongamesinc.workmatetestapp.data.mappers.toEntity
 import com.melongamesinc.workmatetestapp.domain.models.Character
+import com.melongamesinc.workmatetestapp.domain.models.Film
+import com.melongamesinc.workmatetestapp.domain.models.Species
 import com.melongamesinc.workmatetestapp.domain.repository.CharacterRepository
 
 class CharacterRepositoryImpl(
@@ -17,7 +20,9 @@ class CharacterRepositoryImpl(
         try {
             val remoteData = api.getCharacters().results
             dao.insertCharacters(remoteData.map { it.toEntity() })
-        } catch (e: Exception) { }
+        } catch (e: Exception) {
+            Log.e("MyRepo", "Network or parsing error: ${e.message}", e)
+        }
         return dao.getAllCharacters().map { it.toDomain() }
     }
 
@@ -25,7 +30,8 @@ class CharacterRepositoryImpl(
         try {
             val remoteData = api.getCharacterById(id)
             dao.insertCharacters(listOf(remoteData.toEntity()))
-        } catch (e: Exception) { }
+        } catch (e: Exception) {
+        }
         return dao.getCharacterById(id)?.toDomain()
             ?: throw Exception("Character not found in cache and network is unavailable")
     }
@@ -38,5 +44,13 @@ class CharacterRepositoryImpl(
         } catch (e: Exception) {
             emptyList()
         }
+    }
+
+    override suspend fun getFilmById(id: String): Film {
+        return api.getFilmById(id).toDomain()
+    }
+
+    override suspend fun getSpeciesById(id: String): Species {
+        return api.getSpeciesById(id).toDomain()
     }
 }
